@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
+import GiftCard from './components/GiftCard'
+import { Data } from './data'
+
 import './App.css';
 
+
 function App() {
+  const { card } = Data 
+  const [gifts, setGifts] = useState(card);
+  
+  
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       {gifts.map((gift) => (
+      <GiftCard key ={ gift.name } img={gift.img} message={gift.message} name={gift.name}/> 
+    ))}
     </div>
   );
 }
